@@ -30,12 +30,12 @@ const command = process.argv[2];
 // the name they want it run on
 const name = process.argv[3]
 // the corresponding client
-const client = clients[names.indexOf(name) !== -1]
+const client = clients[names.indexOf(name)]
 
 
 // get a random client from whatever list was passed in
 const randomClient = function(clients) {
-  return clients[Math.floor(Math.random() * clients.length - 1)];
+  return clients[Math.floor(Math.random() * clients.length)];
 }
 
 const matchRandomly = function(client) {
@@ -44,7 +44,7 @@ const matchRandomly = function(client) {
 
   // exclude our client from matches by making an array of everyone else
   // find all the clients before our client in the system
-  const clientsBeforeOurClient = clients.slice(0, clientLocation);
+  const clientsBeforeOurClient = clients.slice(0,/* clientLocation*/);
   // find all the clients after our client in the system
   const clientsAfterOurClient = clients.slice(clientLocation);
   // add them together
@@ -56,7 +56,7 @@ const matchRandomly = function(client) {
 
 const getRank = function(client) {
   // this is backwards or something? they're supposed to be ranked
-  // from lowest to highest, and the top one (spider, obvously) should
+  // from lowest to highest, and the top one (spider, obviously) should
   // be ranked #1
   return clients.indexOf(client);
 }
@@ -84,7 +84,7 @@ if (command === 'random') {
 } else if (command === 'match') {
   // get one of their neighbors in the ranking
   console.log(getMatch(client));
-} else if (command !== 'match') {
+} else if (command !== 'match'|| 'random' || 'rate') {
   console.log('Please try one of our options:');
   console.log('random [client name] -> a totally random other user');
   console.log('match [client name] -> a match of similar ranking');
