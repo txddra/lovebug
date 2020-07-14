@@ -31,12 +31,13 @@ const command = process.argv[2];
 const name = process.argv[3]
 // the corresponding client
 const client = clients[names.indexOf(name)]
-
+// console.log({client})
 
 // get a random client from whatever list was passed in
 const randomClient = function(clients) {
   return clients[Math.floor(Math.random() * clients.length)];
 }
+// console.log(randomClient(client))
 
 const matchRandomly = function(client) {
   // get our client's location within our system
@@ -44,9 +45,9 @@ const matchRandomly = function(client) {
 
   // exclude our client from matches by making an array of everyone else
   // find all the clients before our client in the system
-  const clientsBeforeOurClient = clients.slice(0,/* clientLocation*/);
+  const clientsBeforeOurClient = clients.slice(0,clientLocation);
   // find all the clients after our client in the system
-  const clientsAfterOurClient = clients.slice(clientLocation);
+  const clientsAfterOurClient = clients.slice(clientLocation + 1);
   // add them together
   const otherClients = clientsBeforeOurClient + clientsAfterOurClient;
 
