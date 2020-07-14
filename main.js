@@ -59,7 +59,7 @@ const getRank = function(client) {
   // this is backwards or something? they're supposed to be ranked
   // from lowest to highest, and the top one (spider, obviously) should
   // be ranked #1
-  return clients.indexOf(client);
+  return client.clients.indexOf(client);
 }
 
 const getMatch = function(client) {
@@ -69,10 +69,16 @@ const getMatch = function(client) {
   // find their two nearest neighbors
   const neighbor1 = clients[clientLocation - 1];
   const neighbor2 = clients[clientLocation + 1];
-  const neighbors = [neighbor1, neighbor2];
+  const neighbors = [];
+  if(neighbor1 !== undefined){
+    neighbors.push(neighbor1)
+  }
+  if(neighbor2 !== undefined){
+    neighbors.push(neighbor2)
+  }
 
   // pick one of them and return it
-  return matchRandomly(neighbors);
+  return randomClient(neighbors);
 }
 
 
