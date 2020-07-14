@@ -49,7 +49,7 @@ const matchRandomly = function(client) {
   // find all the clients after our client in the system
   const clientsAfterOurClient = clients.slice(clientLocation + 1);
   // add them together
-  const otherClients = clientsBeforeOurClient + clientsAfterOurClient;
+  const otherClients = clientsBeforeOurClient.concat(clientsAfterOurClient);
 
   // return a random client from the remaining pool
   return randomClient(otherClients);
