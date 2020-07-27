@@ -91,7 +91,7 @@ if (command === 'random') {
 } else if (command === 'match') {
   // get one of their neighbors in the ranking
   console.log(getMatch(client));
-} else if (command !== 'match'|| 'random' || 'rate') {
+} else /*if (command !== 'match'|| 'random' || 'rate') */{
   console.log('Please try one of our options:');
   console.log('random [client name] -> a totally random other user');
   console.log('match [client name] -> a match of similar ranking');
